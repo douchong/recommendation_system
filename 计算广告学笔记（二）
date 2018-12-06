@@ -1,0 +1,55 @@
+课程链接：https://study.163.com/course/courseLearn.htm?courseId=321007#/learn/video?lessonId=435070&courseId=321007
+
+章节二：合约广告系统
+  常用开源工具：
+      hadoop:两个脚本语言(pig,hive)，mahout
+      －离线：hbase,
+      －在线：
+      zookeeper: 解决分布式环境一致性问题,chubby
+      thrift,avro:解决分布式环境跨语言通信问题
+      storm，s4:快速计算
+      scribe,chuhwa:data highway,准实时
+      elephant-bird:pig可以直接访问thrift产生的log
+    thrift:跨语言服务搭建工具
+      －用struct定义语言无关的通信数据结构
+      －用service定义RPC服务接口
+      －类似工具：hadoop子项目avro,google的ProtoBuf
+  合约广告系统：
+    直接媒体购买：
+      －供给方：广告排期系统
+      －需求方：代理商
+      －代表：4A公司
+    担保式投送（GD），约定量，量优先于质的销售方式，多采用CPM计费
+    广告投放机
+      －CPM
+      －受众定向
+      －GD合约
+  在线分配：
+    二部图匹配
+    Adwords problem:预算限制(NGD)－> 推广到display ad problem，demand限制，supply限制(NGD)
+    其他问题：maximal representative allocation
+    算法：拉格朗日方法，解对偶问题
+    流量预测指导下的GD在线分配：
+      high water mark算法：离线计划(serving rate alpha)＋在线分配,实际系统中使用（Yahoo GD server）
+  hadoop介绍：
+    核心功能：高可靠性，高效率的分布式文件系统；海量数据处理的编程框架
+    目标：可扩展性，经济性，可靠性
+    hdfs架构：
+      －name node -- data node
+    Map reduce:
+      类似unix pipe, map -> combine -> shuffle & sort -> reduce
+      用调度计算代替调度数据，storm是调度数据而不是调度计算
+      多样接口：java native map/reduce; streaming; pig
+    统计模型：
+      指数族分布
+        －Gaussian, multinomial, maximum entropy
+        －最大似然估计可以通过充分统计量链接到数据（非常好的性质，计算出充分统计量之后数据就可以丢掉了，只有指数族分布有这个性质）
+      指数族混合分布
+        -mixture of Gaussians, HMM, Probabilistic latent semantic analysis(PLSI)
+        -EM算法迭代
+      mapper计算充分统计量，reducer计算更新参数
+    不适用iteration
+    hadoop上的工作流引擎：oozie, 不支持iteration
+    
+      
+      
