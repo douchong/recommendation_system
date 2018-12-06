@@ -1,0 +1,55 @@
+课程链接：https://study.163.com/course/courseLearn.htm?courseId=321007#/learn/video?lessonId=435074&courseId=321007
+
+章节三：受众定向
+  受众定向概念：
+    受众定向即是给AUC打标签的过程
+    标签作用：建立面向广告主的流量售卖体系；为各估计模块提供原始特征
+    常见方式：
+      user标签:行为定向
+      context标签:上下文定向
+      a&u组合标签:DSP部分，根据广告主逻辑给用户打标签,重定向
+      地域，人口属性，网站频道，look-like,hyper-local
+    例子：audience science, 和publisher服务，分析其流量获得标签
+  行为定向：
+    九种原始行为(强度由强到弱)：transaction, pre-transaction, paid click search, ad click, search click, search, share, page view, ad view
+    行为定向计算：行为->tagger->强度计算
+    session log，局部计算
+    long term 行为定向：滑动窗口，衰减
+    评测：reach/CTR曲线,如果不是递减，说明标签没有意义
+  上下文定向：
+    即时标签，near-line,半在线
+    cache存储 url -> 特征表，第一次查询返回空，后续再处理提取特征，不涉及爬虫系统
+    设置一定的失效时间
+  主题模型：
+    PLSI
+    LDA:学习方法 VBEM,Gibbs sampling
+      并行化：
+        -VBEM: E-step (mapper), M-step (reducer)
+        -Gibbs sampling: Mapper, 部分data上做sampling, reducer, 全局update
+    GaP(Gamma-Possion过程)
+    大量而非海量的数据运算，采用类mpi的分布式架构如spark会比map/reduce效率更高
+    supervised方法：supervised-LDA
+    标签体系hierachical,不是说HDP适用这个问题
+  数据加工和交易：
+    精准广告
+    有价值的数据：
+      －用户标识：cookie,登录id
+      －用户行为
+        越靠近demand的行为对转化越有贡献
+        越主动的行为越有效
+      广告商数据
+      用户属性和精确地理位置
+      社交网络
+    数据管理平台(DMP)：
+      目的：
+        －为网站提供数据加工和对外交易的能力
+        －跨媒体打标签并售卖
+        －争议：直接从事广告交易
+      关键特征：
+        －定制化用户划分
+        －统一的对外数据接口，不用每个需求方都加入一个beacon
+      例子：
+        Bluekai: 打标签，售卖标签，离线挖掘，分类很细，靠出售数据变现，不直接运营广告业务
+        AudienceScience
+      Data highway工具：分布式日志搜集系统，Scribe,Flume,Chuhwa
+      
