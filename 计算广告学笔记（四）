@@ -14,4 +14,22 @@
       －淡化广告位概念，卖的是人群
       －适合CPC计价,因为淡化了广告位概念，而不同广告位的效果不同，广告主无法估计
       －不易支持定制化用户划分
+  广告检索：
+    GD也有广告检索，但规模太小
+    布尔表达式检索：
+      -Doc DNF:先与再或，可以按或符号分解成conjunction
+      -conjunction
+      -assignment
+      -sizeof[conjunction],非 不属于 的assignment的个数
+      -维护：conjunction -> doc, assignment -> conjunction
+    长query：
+      －相关性检索
+      －相关性函数为线性时存在有效的剪枝算法，WAND算法
+      －多数情况下WAND好于search的结果
+  流量预测：
+    query视为a,对（u，c）做反向检索,规模太大
+    对u,c分别处理
+    预测过程：
+      -给定a,先通过c的索引找出所有符合条件c的集合
+      -对每个c估计e(a,c),得到a在c上面胜出的百分比p(a,c),并将a的流量累加p(a,c)x #impression_c  (#impression_c是该页面的流量)
       
