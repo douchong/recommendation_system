@@ -1,0 +1,46 @@
+课程链接：https://study.163.com/course/courseLearn.htm?courseId=321007&from=study#/learn/video?lessonId=435087&courseId=321007
+
+章节五：搜索广告与广告网络
+  探索与利用：
+    问题：
+      -长尾(a,u,c)组合
+      -提升整体广告收入
+    方法思路：
+      －multi-arm bandit问题
+      －基本方法：e-greedy方法
+    挑战：
+      组合空间海量
+      各个arm期望收益是动态变化的
+    两个基本思路：
+      －UCB
+      －Contextual Bandit
+        用特征矢量代替arm本身做决策
+  搜索广告：
+    典型的ad network
+    特点：
+      上下文标签强于用户标签
+      很多位置在拍卖，典型位置竞价模式
+    独特的问题：
+      －查询词扩展
+        基于推荐，利用搜索数据
+        基于语义，topic model或者概念化，利用其他文档数据
+        基于收益，利用广告数据
+      －用户相关的决策
+        广告展示条数可以深度个性化
+        session内的短时间的行为
+          -短时受众定向
+          -短时点击反馈
+          -短时用户计算，用流式计算平台，S4,Storm,Storm有可能对log处理多次
+  流式计算平台－Storm：
+    spout - bolt
+    数据流基本在网络和内存进行，极端情况下会有磁盘交互
+    计算逻辑类似map/reduce,但Storm是调度数据而不是调度计算，所以不适合海量数据计算
+  广告购买平台：
+    广告购买平台，Trading desk
+      －连接到不同媒体和网络，提供跨媒体的流量采购
+      －非实时竞价campaign ROI优化能力，非RTB流量的ROI优化，选词，出价
+    代表性公司：EfficientFrontier，为搜索广告主提供ROI优化服务
+      －核心技术：portfolio optimization
+      －核心竞争力：算法，长时间数据积累
+      －被Adobe的Omniture收购
+      
