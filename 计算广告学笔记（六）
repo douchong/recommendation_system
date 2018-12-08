@@ -17,4 +17,78 @@
       多一次round trip（至少多了100ms）,对latency有较大影响
       需要DSP的server,增加了server成本
   Cookie mapping:
-  
+    问题：谁发起？在哪里发起？谁存mapping表？
+    Adx - DSP cookie mapping
+    媒体 - DMP cookie mapping
+  SSP:
+    代表媒体利益
+    关键特征：
+      －提供媒体端的用户划分和售卖能力
+      －灵活接入多种变现方式
+      －收益管理：统一network optimization和RTB
+  DSP:
+    技术在demand端有特别大的施展空间
+    特征：
+      －支持定制化用户划分
+      －跨媒体流量采购,和data exchange和ad exchange同时打交道
+      －通过ROI估计来支持RTB
+    代表：
+      RightMedia:功能性，固定手续费商业模式
+        －提供比较透明的adx采买功能，收取固定比例的佣金
+        －正提供深入的ROI优化服务
+      MediaMath:偏优化方向，套利模型
+    询价：call out optimization，exchange需要预测哪些dsp有可能出价,思路类似GD的流量分配问题
+    流量预测：
+      DSP拿到的流量是bid的函数，这函数称为bid landscape
+      DSP无法拿到所有流量情况，利用历史投放数据，开放性问题
+    DSP点击价值估计：
+      计算eCPM,是它能承受的最高价格
+      场景：DSP实时出价，广告网络中的出价工具，智能定价（不同流量的价值不同，出价也应该不同）
+    点击价值估计原则：
+      用较大bias换取较小的variance
+      充分利用广告商类型的层级结构，以及转化流程上的特征
+    DSP重定向：
+      用途：品牌广告，direct response(视为推荐过程)
+      分类：
+        －网站重定向
+        －搜索重定向
+        －个性化重定向：商品粒度；不推荐已购买商品，而是相关商品；站外推荐引擎（站内推荐，f(c)方式，站外推荐，f(u)方式）
+      推荐算法：
+        协同过滤
+          －内存方法
+            －neighbor based
+            －item based/user based top-N
+          －模型方法
+            －矩阵分解
+            －Bayesian belief network
+        基于内容
+          适合内容rich的推荐，如新闻
+        特别推荐：SVD++算法，和SVD没啥太大关系
+          －矩阵分解方法，但不考虑未出现元素
+          －速度比较快
+      例子：MAGNE+IC
+        核心业务：提供搜索重定向功能，服务于品牌广告商
+        cpm套利
+      例子：criteo
+        站外推荐
+        动态创意
+        与广告主商品库的准实时feed接口
+        采用优选cpm方式从媒体买流量，和广告主按cpc结算
+        严格保证各个广告商数据隔离性，不会将cross-site数据用于推荐
+      新客推荐：
+        问题：对于中小电商，流量不够；对于某些类型广告商，大多数用户无法通过重定向渠道捕捉，比如银行
+        广告商自定义标签，扩展的重定向
+        同样reach水平下，效果好于通用标签
+        尽量利用非demand数据
+    需求端推荐方法：
+      站内
+      站外
+      新客
+    广告流量交易方式：
+      程序交易
+        网络优化，组合优化（Ad network）
+        优选
+        实时竞价（Adx）
+      优先销售
+        CPT,GD (产品形态：Ad server)
+        
