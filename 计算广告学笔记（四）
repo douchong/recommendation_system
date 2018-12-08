@@ -32,4 +32,21 @@
     预测过程：
       -给定a,先通过c的索引找出所有符合条件c的集合
       -对每个c估计e(a,c),得到a在c上面胜出的百分比p(a,c),并将a的流量累加p(a,c)x #impression_c  (#impression_c是该页面的流量)
-      
+  zookeeper介绍：
+    分布式环境解决一致性问题
+    Paxos算法
+      －节点角色：Proposer,Acceptor,Learner
+      －三个约束
+      －准备－－批准
+  点击率预测与逻辑回归
+    点击率预测模型：p(click|a,u,c)
+    regression比ranking更合适
+    cold-start问题，新广告效果估计，可以利用广告层级结构
+    点击率的动态特性
+      －动态特征
+      －模型上在线学习，和上一个对偶
+    逻辑回归模型，最大熵模型的特例
+    一些问题：
+      正负样本不平衡
+  逻辑回归优化方法
+  
