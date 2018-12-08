@@ -38,7 +38,7 @@
       －节点角色：Proposer,Acceptor,Learner
       －三个约束
       －准备－－批准
-  点击率预测与逻辑回归
+  点击率预测与逻辑回归：
     点击率预测模型：p(click|a,u,c)
     regression比ranking更合适
     cold-start问题，新广告效果估计，可以利用广告层级结构
@@ -48,5 +48,17 @@
     逻辑回归模型，最大熵模型的特例
     一些问题：
       正负样本不平衡
-  逻辑回归优化方法
-  
+  逻辑回归优化方法：
+    maximal entropy: IIS方法，非常慢
+    BFGS,quasi-Newton方法
+    L-BFGS
+      -解决BFGS空间复杂度过高的问题
+      -非常容易用map/reduce求解，mapper求部分数据上的梯度，reducer求和并更新参数
+    trust region方法
+    ADMM方法,减少迭代，每次迭代优化更复杂，适用分布式环境
+  动态特征：
+    在某些特征组合维度上聚合历史行为
+    优势：工程架构扩展性强，对新(a,u,c)组合有较强back off能力
+    劣势：存储量大，更新要求高
+    
+    
