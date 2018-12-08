@@ -3,4 +3,18 @@
 章节六：广告交易市场
   广告交易市场：
     广告交易平台，用实时竞价(RTB)方式连接广告和（上下文，用户）
+  实时竞价：
+    两阶段：cookie mapping, ad call
+    supply -- adx -- DSP -- Demand
+    广告交易平台关键特征：
+      －实时竞价方式连接广告和（上下文，用户）
+      －按照展示竞价收取费用
+    例子：RightMedia
+      －核心业务：媒体网络和广告主网络之间的交易平台；提供托管和RTB两种交易模式
+      －与DMP合作以提高精准性和市场流动性
+    潜在问题：
+      浏览数据泄漏风险
+      多一次round trip（至少多了100ms）,对latency有较大影响
+      需要DSP的server,增加了server成本
+  Cookie mapping:
   
